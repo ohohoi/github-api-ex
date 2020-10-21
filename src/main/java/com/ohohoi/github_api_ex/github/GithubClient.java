@@ -1,7 +1,7 @@
 package com.ohohoi.github_api_ex.github;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.ohohoi.github_api_ex.model.Organization;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -14,24 +14,30 @@ import java.io.IOException;
 public class GithubClient {
 
     private static final String API_URL = "https://api.github.com";
+    private static final String ACCESS_TOKEN = "member's personal access token here...";
 
-    private JsonObject getResponse(String orgLogin) throws IOException {
-        JsonObject responseJson = null;
+    public Organization getOrg(String orgLogin) {
+        Organization responseOrg = null;
         String requestUrl = API_URL + "/orgs/" + orgLogin;
 
         HttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet httpGet = new HttpGet(requestUrl);
+        httpGet.setHeader("Authorization", "token " + ACCESS_TOKEN);
 
-        HttpResponse httpResponse = httpClient.execute(httpGet);
+        try {
+            HttpResponse httpResponse = httpClient.execute(httpGet);
 
-        int statusCode = httpResponse.getStatusLine().getStatusCode();
-        if (statusCode == 200) {
-            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-            String responseBody = responseHandler.handleResponse(httpResponse);
-            responseJson = new Gson().fromJson(responseBody, JsonObject.class);
-        }
+            int statusCode = httpResponse.getStatusLine().getStatusCode();
+            if (statusCode == 200) {
+                ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                String responseBody = responseHandler.handleResponse(httpResponse);
+                responseOrg = new Gson().fromJson(responseBody, Organization.class);
+            }
+        } catch (IOException e) { }
 
-        return responseJson;
+        return responseOrg;
     }
+
+
 
 }

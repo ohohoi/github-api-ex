@@ -1,15 +1,32 @@
 package com.ohohoi.github_api_ex.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Organization {
     private Long id;
+
     private String login;
+
     private String url;
+
+    @SerializedName("repos_url")
     private String reposUrl;
+
+    @SerializedName("members_url")
     private String membersUrl;
+
+    @SerializedName("public_members_url")
     private String publicMembersUrl;
+
     private String description;
+
     private String name;
+
+    @SerializedName("public_repos")
     private Long publicRepos;
+
+    @SerializedName("total_private_repos")
+    private Long totalPrivateRepos;
 
     public Organization() { };
 
@@ -83,5 +100,13 @@ public class Organization {
 
     public void setPublicRepos(Long publicRepos) {
         this.publicRepos = publicRepos;
+    }
+
+    public Long getTotalPrivateRepos() {
+        return totalPrivateRepos;
+    }
+
+    public void setTotalPrivateRepos(Long totalPrivateRepos) {
+        this.totalPrivateRepos = totalPrivateRepos;
     }
 }
