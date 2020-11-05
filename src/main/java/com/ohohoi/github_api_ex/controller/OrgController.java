@@ -15,8 +15,8 @@ public class OrgController {
     }
 
     @PostMapping(path = "/org")
-    public void registerOrg(@RequestBody String orgLogin) {
-        orgService.registerOrg(orgLogin);
+    public int registerOrg(@RequestBody String orgLogin) {
+        return orgService.registerOrg(orgLogin);
     }
 
 }

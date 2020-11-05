@@ -14,10 +14,16 @@ public class OrgService {
         this.githubClient = githubClient;
     }
 
-    public void registerOrg(String orgLogin) {
-        Organization organization = githubClient.getOrg(orgLogin);
+    public int registerOrg(String orgLogin) {
+        try {
+            Organization organization = githubClient.getOrg(orgLogin);
 
-        Logger logger = LoggerFactory.getLogger(this.getClass());
-        logger.info(organization.toString());
+            Logger logger = LoggerFactory.getLogger(this.getClass());
+            logger.info(organization.toString());
+        } catch (NullPointerException e) {
+            return 0;
+        }
+
+        return 1;
     }
 }

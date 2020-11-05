@@ -39,5 +39,5 @@ public class GithubClient {
 
         return responseOrg;
     }
-    
+
 }
