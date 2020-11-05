@@ -18,6 +18,8 @@ dependencies {
     implementation 'mysql:mysql-connector-java'
     implementation 'org.apache.httpcomponents:httpclient'
     implementation 'com.google.code.gson:gson'
+    implementation 'org.slf4j:slf4j-api'
+    implementation 'ch.qos.logback:logback-classic'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
