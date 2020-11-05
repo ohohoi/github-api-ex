@@ -2,19 +2,32 @@ package com.ohohoi.github_api_ex.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ORG")
 public class Organization {
+
+    @Id
+    @Column(name = "id")
     private Long id;
 
     private String login;
 
     private String url;
 
+    @Column(name = "repos_url")
     @SerializedName("repos_url")
     private String reposUrl;
 
+    @Column(name = "members_url")
     @SerializedName("members_url")
     private String membersUrl;
 
+    @Column(name = "public_members_url")
     @SerializedName("public_members_url")
     private String publicMembersUrl;
 
@@ -22,17 +35,17 @@ public class Organization {
 
     private String name;
 
+    @Column(name = "public_repos")
     @SerializedName("public_repos")
     private Long publicRepos;
 
+    @Column(name = "total_private_repos")
     @SerializedName("total_private_repos")
     private Long totalPrivateRepos;
 
     public Organization() { };
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
