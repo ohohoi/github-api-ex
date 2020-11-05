@@ -109,4 +109,20 @@ public class Organization {
     public void setTotalPrivateRepos(Long totalPrivateRepos) {
         this.totalPrivateRepos = totalPrivateRepos;
     }
+
+    @Override
+    public String toString() {
+        return "Organization{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", url='" + url + '\'' +
+                ", reposUrl='" + reposUrl + '\'' +
+                ", membersUrl='" + membersUrl + '\'' +
+                ", publicMembersUrl='" + publicMembersUrl + '\'' +
+                ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
+                ", publicRepos=" + publicRepos +
+                ", totalPrivateRepos=" + totalPrivateRepos +
+                '}';
+    }
 }
